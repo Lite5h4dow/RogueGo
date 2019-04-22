@@ -3,7 +3,6 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.Experimental.Input;
 
 namespace RogueGo {
   public class MovementInputSystem : ComponentSystem {
@@ -18,7 +17,7 @@ namespace RogueGo {
 
     protected override void OnUpdate () {
       Entities.With (player).ForEach ((ref MovementInput moveInput) => {
-        
+        moveInput.Value = Input.GetAxis("Movement");
       });
     }
   }
