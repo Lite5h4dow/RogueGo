@@ -1,0 +1,25 @@
+﻿using Unity.Collections;
+using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
+using UnityEngine;
+using UnityEngine.Experimental.Input;
+
+namespace RogueGo {
+  public class MovementInputSystem : ComponentSystem {
+    EntityQuery player;
+
+    protected override void OnCreateManager () {
+      player = GetEntityQuery (
+        typeof (Player),
+        typeof (MovementInput)
+      );
+    }
+
+    protected override void OnUpdate () {
+      Entities.With (player).ForEach ((ref MovementInput moveInput) => {
+        
+      });
+    }
+  }
+}
