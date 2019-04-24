@@ -1,5 +1,5 @@
 # RogueGo
-Lightweight Roguelite for mobile and pc
+Lightweight Roguelite for mobile and pc (shamelessly inspired by Dead Cells)
 
 ## Aim
 I am making this game to prove to myself and others I have what it takes to work in industry making and coding games at a standard of high quality and rapid development.
