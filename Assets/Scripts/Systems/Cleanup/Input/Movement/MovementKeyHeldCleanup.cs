@@ -17,6 +17,7 @@ namespace RogueGo {
 
     protected override void OnUpdate () {
       Entities.With(key).ForEach(entity =>{
+        Debug.Log("Removing Held Component");
         PostUpdateCommands.RemoveComponent<MovementKeyHeld>(entity);
       });
     }

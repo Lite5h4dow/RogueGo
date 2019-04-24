@@ -1,4 +1,4 @@
-﻿using Unity.Collections;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -7,7 +7,7 @@ using UnityEngine;
 namespace RogueGo {
   [UpdateBefore(typeof(CleanupGroup))]
   [UpdateAfter(typeof(InputManager))]
-  public class MovementInputSystem : ComponentSystem {
+  public class MovementReleaseSystem : ComponentSystem {
     EntityQuery player;
     EntityQuery key;
 
@@ -18,7 +18,7 @@ namespace RogueGo {
       );
 
       key = GetEntityQuery (
-        typeof(MovementKeyHeld)
+        typeof(MovementKeyUp)
       );
 
       RequireForUpdate(player);
@@ -27,7 +27,7 @@ namespace RogueGo {
 
     protected override void OnUpdate () {
       Entities.With (player).ForEach ((ref MovementInput moveInput) => {
-        moveInput.Value = Input.GetAxis("Movement");
+        moveInput.Value = 0;
       });
     }
   }
