@@ -30,11 +30,11 @@ namespace RogueGo {
 
     void GetMovementKey(){
       if (Input.GetButtonDown("Movement")) {
-        em.AddComponent(entity, typeof(JumpKeyDown));
+        em.AddComponent(entity, typeof(MovementKeyDown));
       } else if (Input.GetButton("Movement")) {
-        em.AddComponent(entity, typeof(JumpKeyHeld));
+        em.AddComponent(entity, typeof(MovementKeyHeld));
       } else if (Input.GetButtonUp("Movement")) {
-        em.AddComponent(entity, typeof(JumpKeyUp));
+        em.AddComponent(entity, typeof(MovementKeyUp));
       }
     }
   }

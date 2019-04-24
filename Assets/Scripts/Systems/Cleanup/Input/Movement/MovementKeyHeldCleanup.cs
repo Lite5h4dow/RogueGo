@@ -17,7 +17,7 @@ namespace RogueGo {
 
     protected override void OnUpdate () {
       Entities.With(key).ForEach(entity =>{
-        PostUpdateCommands.RemoveComponent<JumpKeyHeld>(entity);
+        PostUpdateCommands.RemoveComponent<MovementKeyHeld>(entity);
       });
     }
   }
