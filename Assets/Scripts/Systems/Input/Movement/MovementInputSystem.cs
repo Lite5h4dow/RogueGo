@@ -7,12 +7,20 @@ using UnityEngine;
 namespace RogueGo {
   public class MovementInputSystem : ComponentSystem {
     EntityQuery player;
+    EntityQuery key;
 
     protected override void OnCreateManager () {
       player = GetEntityQuery (
         typeof (Player),
         typeof (MovementInput)
       );
+
+      key = GetEntityQuery (
+        typeof(MovementKeyHeld)
+      );
+
+      RequireForUpdate(player);
+      RequireForUpdate(key);
     }
 
     protected override void OnUpdate () {
