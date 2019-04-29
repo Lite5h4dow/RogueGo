@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace RogueGo{
   [Serializable]
-  public struct JumpLaunch:IComponentData{
+  public struct LaunchDuration:IComponentData{
     public float Value;
   }
-  public class JumpLaunchComponent : ComponentDataProxy<JumpLaunch>{}
+  public class LaunchDurationComponent : ComponentDataProxy<LaunchDuration>{}
 }

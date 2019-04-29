@@ -5,6 +5,6 @@ using UnityEngine;
 
 namespace RogueGo{
   [Serializable]
-  public struct ReadyToJump:IComponentData{}
-  public class ReadyToJumpComponent : ComponentDataProxy<ReadyToJump>{}
+  public struct Ground:IComponentData{}
+  public class GroundComponent : ComponentDataProxy<Ground>{}
 }
