@@ -5,6 +5,7 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
+  [UpdateInGroup(typeof(EarlyPresentationSystemGroup))]
   public class JumpInputSystem : ComponentSystem {
     EntityQuery player;
     EntityQuery key;

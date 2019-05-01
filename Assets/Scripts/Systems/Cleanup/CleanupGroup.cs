@@ -3,6 +3,6 @@ using Unity.Entities;
 using UnityEngine;
 
 namespace RogueGo {
-  [UpdateAfter (typeof (UnityEngine.Experimental.PlayerLoop.PreLateUpdate))]
+  [UpdateAfter (typeof (LatePresentationSystemGroup))]
   public class CleanupGroup : ComponentSystemGroup { }
 }

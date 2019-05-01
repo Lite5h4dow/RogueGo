@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace RogueGo {
+  [UpdateInGroup(typeof(EarlyPresentationSystemGroup))]
   public class InputManager : MonoBehaviour {
     Entity entity;
     EntityManager em;
