@@ -5,23 +5,24 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
+  [UpdateInGroup(typeof(MainSimulationSystemGroup))]
   public class JumpLaunchEndSystem : ComponentSystem {
     EntityQuery player;
 
     protected override void OnCreateManager () {
-      player = GetEntityQuery (
-        typeof (Player),
-        typeof (JumpLaunch)
+      player = GetEntityQuery(
+        typeof(Player),
+        typeof(JumpLaunch)
       );
     }
 
     protected override void OnUpdate () {
       Entities.With(player).ForEach((Entity entity, ref JumpLaunch launch) => {
-        if(launch.Value > 0)
+        if (launch.Value > 0)
           return;
 
         PostUpdateCommands.RemoveComponent<JumpLaunch>(entity);
-        PostUpdateCommands.AddComponent<JumpEnd>(entity, new JumpEnd{});
+        PostUpdateCommands.AddComponent<JumpEnd>(entity, new JumpEnd { });
 
       });
     }

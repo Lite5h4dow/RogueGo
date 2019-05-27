@@ -9,21 +9,20 @@ namespace RogueGo {
     EntityQuery player;
 
     protected override void OnCreateManager () {
-      player = GetEntityQuery (
-        typeof (Player),
-        typeof (Grounded),
-        ComponentType.Exclude (typeof (CollidedWithGround))
+      player = GetEntityQuery(
+        typeof(Player),
+        typeof(Grounded),
+        ComponentType.Exclude(typeof(CollidedWithGround))
       );
     }
 
     protected override void OnUpdate () {
-      Entities.With (player).ForEach (entity => {
-        PostUpdateCommands.RemoveComponent<Grounded> (entity);
-        PostUpdateCommands.AddComponent<Airborne> (entity, new Airborne { });
+      Entities.With(player).ForEach(entity => {
+        PostUpdateCommands.RemoveComponent<Grounded>(entity);
 
         /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
         if (Bootstrap.DeveloperSettings.DebugGroundedState) {
-          Debug.Log ($"<color=green>{this.GetType()}</color> Airborne");
+          Debug.Log($"<color=green>{this.GetType()}</color> Airborne");
         }
         /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
 

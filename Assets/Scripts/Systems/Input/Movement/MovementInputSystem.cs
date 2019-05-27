@@ -5,28 +5,22 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
-  [UpdateBefore(typeof(CleanupGroup))]
-  [UpdateAfter(typeof(InputManager))]
+  [UpdateInGroup(typeof(MainSimulationSystemGroup))]
   public class MovementInputSystem : ComponentSystem {
     EntityQuery player;
-    EntityQuery key;
 
     protected override void OnCreateManager () {
-      player = GetEntityQuery (
-        typeof (Player),
-        typeof (MovementInput)
+      player = GetEntityQuery(
+        typeof(Player),
+        typeof(MovementInput)
       );
-
-      key = GetEntityQuery (
-        typeof(MovementKeyHeld)
-      );
-
-      RequireForUpdate(player);
-      RequireForUpdate(key);
     }
 
     protected override void OnUpdate () {
-      Entities.With (player).ForEach ((ref MovementInput moveInput) => {
+      if (!Input.GetButton("Movement"))
+        return;
+
+      Entities.With(player).ForEach((ref MovementInput moveInput) => {
         moveInput.Value = Input.GetAxis("Movement");
       });
     }
