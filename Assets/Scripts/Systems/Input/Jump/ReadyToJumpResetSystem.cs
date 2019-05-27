@@ -6,23 +6,22 @@ using UnityEngine;
 
 namespace RogueGo {
   [UpdateInGroup(typeof(MainSimulationSystemGroup))]
-  public class JumpReleaseEndSystem : ComponentSystem {
+  public class ReadyToJumpResetSystem : ComponentSystem {
     EntityQuery player;
 
     protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
-        typeof(JumpLaunch)
+        typeof(Grounded),
+        typeof(JumpEnd)
       );
     }
 
     protected override void OnUpdate () {
-      if (!Input.GetButtonUp("Jump"))
-        return;
-
       Entities.With(player).ForEach(entity => {
-        PostUpdateCommands.RemoveComponent<JumpLaunch>(entity);
-        PostUpdateCommands.AddComponent<JumpEnd>(entity, new JumpEnd { });
+        Debug.Log("ready to jump");
+        PostUpdateCommands.RemoveComponent<JumpEnd>(entity);
+        PostUpdateCommands.AddComponent<ReadyToJump>(entity, new ReadyToJump { });
       });
     }
   }
