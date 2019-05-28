@@ -5,28 +5,27 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
+  [UpdateInGroup(typeof(MainSimulationSystemGroup))]
+  [UpdateAfter(typeof(GroundedSystem))]
   public class AirborneSystem : ComponentSystem {
     EntityQuery player;
 
     protected override void OnCreateManager () {
       player = GetEntityQuery(
+        ComponentType.Exclude(typeof(CollidedWithGround)),
         typeof(Player),
-        typeof(Grounded),
-        ComponentType.Exclude(typeof(CollidedWithGround))
+        typeof(Grounded)
       );
     }
 
     protected override void OnUpdate () {
-      Entities.With(player).ForEach(entity => {
-        PostUpdateCommands.RemoveComponent<Grounded>(entity);
+      EntityManager.RemoveComponent(player, typeof(Grounded));
 
-        /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
-        if (Bootstrap.DeveloperSettings.DebugGroundedState) {
-          Debug.Log($"<color=green>{this.GetType()}</color> Airborne");
-        }
-        /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
-
-      });
+      /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
+      if (Bootstrap.DeveloperSettings.DebugGroundedState) {
+        Debug.Log($"<color=green>{this.GetType()}</color> Airborne");
+      }
+      /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
     }
   }
 }

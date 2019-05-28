@@ -5,7 +5,7 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
-  [UpdateInGroup(typeof(LateSimulationSystemGroup))]
+  [UpdateInGroup(typeof(LatePresentationSystemGroup))]
   public class CollidedWithGroundCleanupSystem : ComponentSystem {
     EntityQuery collision;
 
