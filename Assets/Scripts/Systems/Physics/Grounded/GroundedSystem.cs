@@ -5,7 +5,7 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
-  [UpdateInGroup(typeof(SimulationSystemGroup))]
+  [UpdateInGroup(typeof(MainSimulationSystemGroup))]
   public class GroundedSystem : ComponentSystem {
     EntityQuery player;
 
@@ -18,16 +18,13 @@ namespace RogueGo {
     }
 
     protected override void OnUpdate () {
-      Entities.With(player).ForEach(entity => {
-        PostUpdateCommands.AddComponent<Grounded>(entity, new Grounded { });
+      EntityManager.AddComponent(player, typeof(Grounded));
 
-        /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
-        if (Bootstrap.DeveloperSettings.DebugGroundedState) {
-          Debug.Log($"<color=green>{this.GetType()}</color> Grounded");
-        }
-        /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
-
-      });
+      /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
+      if (Bootstrap.DeveloperSettings.DebugGroundedState) {
+        Debug.Log($"<color=green>{this.GetType()}</color> Grounded");
+      }
+      /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
     }
   }
 }
