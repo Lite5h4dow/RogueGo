@@ -18,7 +18,7 @@ namespace RogueGo {
 
     protected override void OnUpdate () {
       Entities.With(player).ForEach((Animator anim, ref MovementInput move) => {
-        anim.SetBool("IsRunning", (move.Value != 0));
+        anim.SetBool("isRunning", (move.Value != 0));
       });
     }
   }
