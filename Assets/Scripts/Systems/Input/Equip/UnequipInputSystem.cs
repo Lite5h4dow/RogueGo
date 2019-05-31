@@ -1,0 +1,34 @@
+using System.Collections.Concurrent;
+using Unity.Collections;
+using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
+using UnityEngine;
+
+namespace RogueGo {
+  public class UnequipInputSystem : ComponentSystem {
+    EntityQuery player;
+
+    protected override void OnCreateManager () {
+      player = GetEntityQuery(
+        typeof(Player),
+        typeof(SwordDrawn),
+        typeof(Grounded)
+      );
+    }
+
+    protected override void OnUpdate () {
+      if (!Input.GetButtonDown("Equip"))
+        return;
+
+      Entities.With(player).ForEach(entity => {
+        PostUpdateCommands.RemoveComponent<SwordDrawn>(entity);
+      });
+      /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
+      if (Bootstrap.DeveloperSettings.DebugEquipState) {
+        Debug.Log($"<color=red>{this.GetType()}</color> Unequipped");
+      }
+      /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
+    }
+  }
+}

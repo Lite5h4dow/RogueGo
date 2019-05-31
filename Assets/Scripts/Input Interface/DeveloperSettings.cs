@@ -9,5 +9,6 @@ namespace RogueGo {
     public bool DebugJumpState;
     public bool DebugBoostState;
     public bool DebugGroundedState;
+    public bool DebugEquipState;
   }
 }
