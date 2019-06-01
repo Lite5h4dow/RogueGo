@@ -11,7 +11,8 @@ namespace RogueGo {
     protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
-        ComponentType.Exclude(typeof(SwordDrawn)),
+        typeof(EquipPressed),
+        typeof(CanEquip),
         typeof(Grounded)
       );
     }
@@ -21,7 +22,8 @@ namespace RogueGo {
         return;
 
       Entities.With(player).ForEach(entity => {
-        PostUpdateCommands.AddComponent<SwordDrawn>(entity, new SwordDrawn { });
+        PostUpdateCommands.RemoveComponent<CanEquip>(entity);
+        PostUpdateCommands.AddComponent<CanUnequip>(entity, new CanUnequip { });
       });
 
       /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */

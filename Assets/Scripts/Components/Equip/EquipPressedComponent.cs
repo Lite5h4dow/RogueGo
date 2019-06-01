@@ -5,9 +5,8 @@ using UnityEngine;
 
 namespace RogueGo {
   [Serializable]
-  public struct SwordDrawn : IComponentData {
+  public struct EquipPressed : IComponentData {
   }
-
-  public class SwordDrawnComponent : ComponentDataProxy<SwordDrawn> {
+  public class EquipPressedComponent : ComponentDataProxy<EquipPressed> {
   }
 }

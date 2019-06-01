@@ -5,21 +5,21 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
-  public class AnimSwordEquippedSystem : ComponentSystem {
+  public class EquipPressedSystem : ComponentSystem {
     EntityQuery player;
 
     protected override void OnCreateManager () {
       player = GetEntityQuery(
-        typeof(Player),
-        typeof(CanUnequip),
-        typeof(Grounded),
-        typeof(Animator)
+        typeof(Player)
       );
     }
 
     protected override void OnUpdate () {
-      Entities.With(player).ForEach((Animator anim) => {
-        anim.SetBool("swordDrawn", true);
+      if (!Input.GetButtonDown("Equip"))
+        return;
+
+      Entities.With(player).ForEach(entity => {
+        PostUpdateCommands.AddComponent<EquipPressed>(entity, new EquipPressed { });
       });
     }
   }

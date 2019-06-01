@@ -11,7 +11,7 @@ namespace RogueGo {
     protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
-        ComponentType.Exclude(typeof(SwordDrawn)),
+        typeof(CanEquip),
         typeof(Grounded),
         typeof(Animator)
       );
