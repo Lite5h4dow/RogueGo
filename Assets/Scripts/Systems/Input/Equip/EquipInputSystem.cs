@@ -2,13 +2,14 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+
 using UnityEngine;
 
 namespace RogueGo {
   public class EquipInputSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager () {
+    protected override void OnCreateManager() {
       player = GetEntityQuery(
         typeof(Player),
         typeof(EquipPressed),
@@ -17,11 +18,9 @@ namespace RogueGo {
       );
     }
 
-    protected override void OnUpdate () {
-      if (!Input.GetButtonDown("Equip"))
-        return;
-
+    protected override void OnUpdate() {
       Entities.With(player).ForEach(entity => {
+        PostUpdateCommands.RemoveComponent<EquipPressed>(entity);
         PostUpdateCommands.RemoveComponent<CanEquip>(entity);
         PostUpdateCommands.AddComponent<CanUnequip>(entity, new CanUnequip { });
       });

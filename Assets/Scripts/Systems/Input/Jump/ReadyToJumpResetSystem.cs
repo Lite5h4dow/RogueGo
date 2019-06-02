@@ -2,6 +2,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+
 using UnityEngine;
 
 namespace RogueGo {
@@ -9,7 +10,7 @@ namespace RogueGo {
   public class ReadyToJumpResetSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager () {
+    protected override void OnCreateManager() {
       player = GetEntityQuery(
         typeof(Player),
         typeof(Grounded),
@@ -17,9 +18,8 @@ namespace RogueGo {
       );
     }
 
-    protected override void OnUpdate () {
+    protected override void OnUpdate() {
       Entities.With(player).ForEach(entity => {
-        Debug.Log("ready to jump");
         PostUpdateCommands.RemoveComponent<JumpEnd>(entity);
         PostUpdateCommands.AddComponent<ReadyToJump>(entity, new ReadyToJump { });
       });
