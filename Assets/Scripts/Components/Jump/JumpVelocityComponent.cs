@@ -1,12 +1,14 @@
 using System;
+
 using Unity.Entities;
 using Unity.Mathematics;
+
 using UnityEngine;
 
-namespace RogueGo{
+namespace RogueGo {
   [Serializable]
-  public struct JumpVelocity:IComponentData{
-      public float Value;
+  public struct JumpVelocity : IComponentData {
+    public float Value;
   }
-  public class JumpVelocityComponent : ComponentDataProxy<JumpVelocity>{}
+  public class JumpVelocityComponent : ComponentDataProxy<JumpVelocity> { }
 }

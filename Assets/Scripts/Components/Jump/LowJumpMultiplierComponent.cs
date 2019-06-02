@@ -7,8 +7,8 @@ using UnityEngine;
 
 namespace RogueGo {
   [Serializable]
-  public struct LaunchDuration : IComponentData {
+  public struct LowJumpMultiplier : IComponentData {
     public float Value;
   }
-  public class LaunchDurationComponent : ComponentDataProxy<LaunchDuration> { }
+  public class LowJumpMultiplierComponent : ComponentDataProxy<LowJumpMultiplier> { }
 }
