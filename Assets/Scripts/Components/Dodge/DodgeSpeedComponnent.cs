@@ -7,9 +7,8 @@ using UnityEngine;
 
 namespace RogueGo {
   [Serializable]
-  public struct ReadyToDodge : IComponentData {
+  public struct DodgeSpeed : IComponentData {
     public float Value;
   }
-
-  public class ReadyToDodgeComponenet : ComponentDataProxy<ReadyToDodge> {}
+  public class DodgeSpeedComponnent : ComponentDataProxy<DodgeSpeed> { }
 }
