@@ -2,6 +2,7 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+
 using UnityEngine;
 
 namespace RogueGo {
@@ -9,14 +10,15 @@ namespace RogueGo {
   public class MovementInputSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager () {
+    protected override void OnCreateManager() {
       player = GetEntityQuery(
         typeof(Player),
-        typeof(MovementInput)
+        typeof(MovementInput),
+        ComponentType.Exclude(typeof(Dodging))
       );
     }
 
-    protected override void OnUpdate () {
+    protected override void OnUpdate() {
       if (!Input.GetButton("Movement"))
         return;
 
