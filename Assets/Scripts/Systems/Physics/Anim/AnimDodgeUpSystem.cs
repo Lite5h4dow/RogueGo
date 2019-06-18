@@ -6,20 +6,22 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
-  public class AnimNotDodgingSystem : ComponentSystem {
+  public class AnimDodgeUpSystem : ComponentSystem {
     EntityQuery player;
 
     protected override void OnCreateManager() {
       player = GetEntityQuery(
         typeof(Player),
         typeof(Animator),
-        ComponentType.Exclude(typeof(Dodging))
+        typeof(DodgeUp)
       );
     }
 
     protected override void OnUpdate() {
-      Entities.With(player).ForEach((Animator anim) => {
-        anim.SetBool("isDodging", false);
+
+      Entities.With(player).ForEach((Entity entity, Animator anim) => {
+        PostUpdateCommands.RemoveComponent<DodgeUp>(entity);
+        anim.SetTrigger("DodgeUp");
       });
     }
   }

@@ -30,6 +30,7 @@ namespace RogueGo {
 
         PostUpdateCommands.RemoveComponent<ReadyToDodge>(entity);
         PostUpdateCommands.AddComponent<Dodging>(entity, new Dodging { Value = mdt.Value });
+        PostUpdateCommands.AddComponent<DodgeDown>(entity, new DodgeDown {});
 
         /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
         if (Bootstrap.DeveloperSettings.DebugDodgeState) {

@@ -23,6 +23,7 @@ namespace RogueGo {
 
         PostUpdateCommands.RemoveComponent<Dodging>(entity);
         PostUpdateCommands.AddComponent<ReadyToDodge>(entity, new ReadyToDodge { Value = 0 });
+        PostUpdateCommands.AddComponent<DodgeUp>(entity, new DodgeUp {});
 
         /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
         if (Bootstrap.DeveloperSettings.DebugDodgeState) {

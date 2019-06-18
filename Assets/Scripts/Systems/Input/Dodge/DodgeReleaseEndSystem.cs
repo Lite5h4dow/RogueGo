@@ -22,6 +22,7 @@ namespace RogueGo {
 
       PostUpdateCommands.RemoveComponent<Dodging>(player.GetSingletonEntity());
       PostUpdateCommands.AddComponent<ReadyToDodge>(player.GetSingletonEntity(), new ReadyToDodge { Value = 0 });
+      PostUpdateCommands.AddComponent<DodgeUp>(player.GetSingletonEntity(), new DodgeUp {});
 
       /* ----------------- DEVELOPER SETTINGS - REMOVE ME -------------------- */
       if (Bootstrap.DeveloperSettings.DebugDodgeState) {
