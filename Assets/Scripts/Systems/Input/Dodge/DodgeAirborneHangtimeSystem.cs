@@ -6,7 +6,8 @@ using Unity.Transforms;
 using UnityEngine;
 
 namespace RogueGo {
-  [UpdateInGroup(typeof(LateSimulationSystemGroup))]
+  [UpdateInGroup(typeof(MainSimulationSystemGroup))]
+  [UpdateAfter(typeof(DodgeMovementSystem))]
   public class DodgeAirborneHangtimeSystem : ComponentSystem {
     EntityQuery player;
 

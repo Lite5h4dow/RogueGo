@@ -408,10 +408,12 @@ GameObject:
   - component: {fileID: 828284936}
   - component: {fileID: 828284942}
   - component: {fileID: 828284941}
-  - component: {fileID: 828284940}
+  - component: {fileID: 828284944}
   - component: {fileID: 828284939}
   - component: {fileID: 828284938}
   - component: {fileID: 828284937}
+  - component: {fileID: 828284943}
+  - component: {fileID: 828284940}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -481,7 +483,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -1147,6 +1149,93 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &828284943
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828284935}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &828284944
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828284935}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 828284940}
+    m_ColliderPaths:
+    - - X: -110000029
+        Y: -60000000
+      - X: -109999971
+        Y: -10000000
+      - X: 90000000
+        Y: -10000029
+      - X: 90000029
+        Y: -60000000
+      - X: 210000000
+        Y: -59999971
+      - X: 209999971
+        Y: 0
+      - X: 200000000
+        Y: -29
+      - X: 199999971
+        Y: -50000000
+      - X: 100000000
+        Y: -49999971
+      - X: 99999971
+        Y: 0
+      - X: -120000000
+        Y: -29
+      - X: -120000029
+        Y: -50000000
+      - X: -210000000
+        Y: -50000029
+      - X: -209999971
+        Y: -60000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: -10.999997, y: -1}
+      - {x: 9, y: -1.0000029}
+      - {x: 9.000003, y: -6}
+      - {x: 21, y: -5.999997}
+      - {x: 20.999996, y: 0}
+      - {x: 20, y: -0.0000029}
+      - {x: 19.999996, y: -5}
+      - {x: 10, y: -4.999997}
+      - {x: 9.999997, y: 0}
+      - {x: -12, y: -0.0000029}
+      - {x: -12.000004, y: -5}
+      - {x: -21, y: -5.000003}
+      - {x: -20.999996, y: -6}
+      - {x: -11.000003, y: -6}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005
 --- !u!1 &960479503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,7 +1735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    Value: 1.5
+    Value: 2
 --- !u!114 &1356048985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,7 +1749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    Value: 1
+    Value: 0.5
 --- !u!114 &1356048986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1686,7 +1775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    Value: 0.1
+    Value: 0.05
 --- !u!114 &1356048988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1700,7 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    Value: 9
+    Value: 10
 --- !u!114 &1356048989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,8 +1868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &1356048995
-CapsuleCollider2D:
+--- !u!61 &1356048995
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1792,9 +1881,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.14, y: 0.35}
-  m_Direction: 0
+  m_Offset: {x: 0, y: -0.025}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.37}
+    newSize: {x: 0.5, y: 0.37}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.3}
+  m_EdgeRadius: 0
 --- !u!95 &1356048996
 Animator:
   serializedVersion: 3
