@@ -9,9 +9,9 @@ namespace RogueGo {
   public class FallGravityMultiplierSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager() {
+    protected override void OnCreateManager () {
       player = GetEntityQuery(
-        ComponentType.Exclude(typeof(Grounded)),
+        ComponentType.Exclude(typeof(CollidedWithGround)),
         typeof(FallMultiplier),
         typeof(Player),
         typeof(Rigidbody2D)
@@ -19,7 +19,7 @@ namespace RogueGo {
       );
     }
 
-    protected override void OnUpdate() {
+    protected override void OnUpdate () {
       Entities.With(player).ForEach((Rigidbody2D rb, ref FallMultiplier fm) => {
         if (!Input.GetButton("Jump"))
           return;

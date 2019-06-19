@@ -12,7 +12,7 @@ namespace RogueGo {
       player = GetEntityQuery(
         typeof(Player),
         typeof(CanUnequip),
-        typeof(Grounded),
+        typeof(CollidedWithGround),
         typeof(Animator)
       );
     }

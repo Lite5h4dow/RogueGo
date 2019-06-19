@@ -13,7 +13,7 @@ namespace RogueGo {
       player = GetEntityQuery(
         typeof(Player),
         typeof(AttackInputPressed),
-        ComponentType.Exclude(typeof(Grounded)),
+        ComponentType.Exclude(typeof(CollidedWithGround)),
         typeof(AirborneMaxAttackCount),
         typeof(AttackCounter)
       );

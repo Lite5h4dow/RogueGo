@@ -11,16 +11,16 @@ namespace RogueGo {
   public class DodgeAirborneHangtimeSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager() {
+    protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
         typeof(Dodging),
         typeof(Rigidbody2D),
-        ComponentType.Exclude(typeof(Grounded))
+        ComponentType.Exclude(typeof(CollidedWithGround))
       );
     }
 
-    protected override void OnUpdate() {
+    protected override void OnUpdate () {
       Entities.With(player).ForEach((Rigidbody2D rigid) => {
         rigid.velocity = new Vector2(rigid.velocity.x, 0);
       });

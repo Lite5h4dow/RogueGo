@@ -9,16 +9,16 @@ namespace RogueGo {
   public class LowJumpGravityMultiplierSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager() {
+    protected override void OnCreateManager () {
       player = GetEntityQuery(
-        ComponentType.Exclude(typeof(Grounded)),
+        ComponentType.Exclude(typeof(CollidedWithGround)),
         typeof(LowJumpMultiplier),
         typeof(Player),
         typeof(Rigidbody2D)
       );
     }
 
-    protected override void OnUpdate() {
+    protected override void OnUpdate () {
       Entities.With(player).ForEach((Rigidbody2D rb, ref LowJumpMultiplier ljm) => {
         if (Input.GetButton("Jump"))
           return;

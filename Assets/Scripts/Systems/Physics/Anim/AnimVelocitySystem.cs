@@ -10,8 +10,8 @@ namespace RogueGo {
 
     protected override void OnCreateManager () {
       player = GetEntityQuery(
+        ComponentType.Exclude(typeof(CollidedWithGround)),
         typeof(Player),
-        ComponentType.Exclude(typeof(Grounded)),
         typeof(Animator),
         typeof(Rigidbody2D)
       );

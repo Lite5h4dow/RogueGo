@@ -11,7 +11,7 @@ namespace RogueGo {
     protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
-        typeof(Grounded),
+        typeof(CollidedWithGround),
         typeof(Animator)
       );
     }
