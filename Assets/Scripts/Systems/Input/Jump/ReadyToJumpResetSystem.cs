@@ -10,19 +10,19 @@ namespace RogueGo {
   public class ReadyToJumpResetSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager() {
+    protected override void OnCreateManager () {
       player = GetEntityQuery(
+        ComponentType.Exclude(typeof(ReadyToJump)),
         typeof(Player),
-        typeof(Grounded),
-        typeof(JumpEnd),
-        ComponentType.Exclude(typeof(ReadyToJump))
+        typeof(CollidedWithGround),
+        typeof(JumpEnd)
       );
     }
 
-    protected override void OnUpdate() {
+    protected override void OnUpdate () {
       Entities.With(player).ForEach(entity => {
         PostUpdateCommands.RemoveComponent<JumpEnd>(entity);
-        PostUpdateCommands.AddComponent<ReadyToJump>(entity, new ReadyToJump {});
+        PostUpdateCommands.AddComponent<ReadyToJump>(entity, new ReadyToJump { });
       });
     }
   }

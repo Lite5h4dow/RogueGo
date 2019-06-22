@@ -1,26 +1,24 @@
 using System.Collections.Concurrent;
-
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-
 using UnityEngine;
 
 namespace RogueGo {
   public class UnequipInputSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager() {
+    protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
         typeof(EquipPressed),
         typeof(CanUnequip),
-        typeof(Grounded)
+        typeof(CollidedWithGround)
       );
     }
 
-    protected override void OnUpdate() {
+    protected override void OnUpdate () {
       Entities.With(player).ForEach(entity => {
         PostUpdateCommands.RemoveComponent<EquipPressed>(entity);
         PostUpdateCommands.RemoveComponent<CanUnequip>(entity);

@@ -9,16 +9,16 @@ namespace RogueGo {
   public class EquipInputSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager() {
+    protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
         typeof(EquipPressed),
         typeof(CanEquip),
-        typeof(Grounded)
+        typeof(CollidedWithGround)
       );
     }
 
-    protected override void OnUpdate() {
+    protected override void OnUpdate () {
       Entities.With(player).ForEach(entity => {
         PostUpdateCommands.RemoveComponent<EquipPressed>(entity);
         PostUpdateCommands.RemoveComponent<CanEquip>(entity);

@@ -9,17 +9,17 @@ namespace RogueGo {
   public class AttackGroundedIncrementSystem : ComponentSystem {
     EntityQuery player;
 
-    protected override void OnCreateManager() {
+    protected override void OnCreateManager () {
       player = GetEntityQuery(
         typeof(Player),
         typeof(AttackInputPressed),
-        typeof(Grounded),
+        typeof(CollidedWithGround),
         typeof(GroundedMaxAttackCount),
         typeof(AttackCounter)
       );
     }
 
-    protected override void OnUpdate() {
+    protected override void OnUpdate () {
       Entities.With(player).ForEach((Entity entity, ref GroundedMaxAttackCount gmac, ref AttackCounter ac) => {
         PostUpdateCommands.RemoveComponent<AttackInputPressed>(entity);
 
